@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Profile</title>
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: sans-serif;
+            margin: 0;
+            display: flex;
+        }
+
+        .sidebar {
+            width: 200px;
+            padding: 20px;
+            background-color: #181818;
+        }
+
+        .profile {
+            width: calc(100% - 200px);
+            padding: 20px;
+        }
+
+        .profile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .profile-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .profile-stats {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .profile-stat {
+            font-size: 16px;
+        }
+
+        .profile-description {
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .profile-actions {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .profile-action {
+            background-color: #181818;
+            border: 1px solid #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .profile-action:hover {
+            background-color: #282828;
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .sidebar-menu-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .sidebar-menu-item:hover {
+            background-color: #282828;
+        }
+
+        .sidebar-menu-icon {
+            margin-right: 10px;
+        }
+
+        .sidebar-menu-text {
+            font-size: 16px;
+        }
+
+        .sidebar-menu-item.active {
+            background-color: #282828;
+        }
+
+        .profile-content {
+            margin-top: 20px;
+        }
+
+        .profile-content-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .profile-content-title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .profile-content-actions {
+            display: flex;
+        }
+
+        .profile-content-action {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .profile-content-action i {
+            font-size: 18px;
+        }
+
+        .profile-content-post {
+            display: flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .profile-content-post-image {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 10px;
+        }
+
+        .profile-content-post-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .profile-content-post-text {
+            font-size: 14px;
+        }
+
+        .profile-content-post-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .profile-content-post-actions-left {
+            display: flex;
+        }
+
+        .profile-content-post-actions-left i {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+
+        .profile-content-post-actions-right {
+            display: flex;
+        }
+
+        .profile-content-post-actions-right i {
+            font-size: 18px;
+            margin-left: 5px;
+        }
+
+        .profile-content-post-actions-right i:hover {
+            color: #fff;
+        }
+
+        .profile-content-post-actions-left i:hover {
+            color: #fff;
+        }
+
+        .profile-content-post-actions-left span {
+            font-size: 12px;
+        }
+
+        .profile-content-post-actions-right span {
+            font-size: 12px;
+        }
+
+        .profile-content-post-actions-right span:hover {
+            color: #fff;
+        }
+
+        .profile-content-post-actions-left span:hover {
+            color: #fff;
+        }
+
+        .profile-content-post-actions-left i:nth-child(1) {
+            color: red;
+        }
+
+        .profile-content-post-actions-left i:nth-child(2) {
+            color: green;
+        }
+
+        .profile-content-post-actions-right i:nth-child(1) {
+            color: blue;
+        }
+
+        .profile-content-post-actions-right i:nth-child(2) {
+            color: purple;
+        }
+
+        .profile-content-post-actions-right i:nth-child(3) {
+            color: orange;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="sidebar-menu">
+            <div class="sidebar-menu-item active">
+                <i class="sidebar-menu-icon fas fa-home"></i>
+                <span class="sidebar-menu-text">Home</span>
+            </div>
+            <div class="sidebar-menu-item">
+                <i class="sidebar-menu-icon fas fa-search"></i>
+                <span class="sidebar-menu-text">Search</span>
+            </div>
+            <div class="sidebar-menu-item">
+                <i class="sidebar-menu-icon fas fa-compass"></i>
+                <span class="sidebar-menu-text">Explore</span>
+            </div>
+            <div class="sidebar-menu-item">
+                <i class="sidebar-menu-icon fas fa-video"></i>
+                <span class="sidebar-menu-text">Reels</span>
+            </div>
+            <div class="sidebar-menu-item">
+                <i class="sidebar-menu-icon fas fa-comment"></i>
+                <span class="sidebar-menu-text">Messages</span>
+            </div>
+            <div class="sidebar-menu-item">
+                <i class="sidebar-menu-icon fas fa-heart"></i>
+                <span class="sidebar-menu-text">Notifications</span>
+            </div>
+            <div class="sidebar-menu-item">
+                <i class="sidebar-menu-icon fas fa-plus"></i>
+                <span class="sidebar-menu-text">Create</span>
+            </div>
+            <div class="sidebar-menu-item">
+                <i class="sidebar-menu-icon fas fa-user"></i>
+                <span class="sidebar-menu-text">Profile</span>
+            </div>
+        </div>
+    </div>
+    <div class="profile">
+        <div class="profile-header">
+            <div class="profile-info">
+                <div class="profile-image">
+                    <img src="https://i.imgur.com/R6gR8yA.jpg" alt="Profile Image">
+                </div>
+                <div class="profile-name">sangkeswara</div>
+            </div>
+            <div class="profile-actions">
+                <button class="profile-action">Edit profile</button>
+                <button class="profile-action">View archive</button>
+                <button class="profile-action">Ad tools</button>
+            </div>
+        </div>
+        <div class="profile-stats">
+            <div class="profile-stat">0 posts</div>
+            <div class="profile-stat">1,413 followers</div>
+            <div class="profile-stat">872 following</div>
+        </div>
+        <div class="profile-description">
+            Personal blog
+            <br>
+            Psalm 27:1
+        </div>
+        <div class="profile-content">
+            <div class="profile-content-section">
+                <div class="profile-content-title">
+                    948 accounts reached in the last 30 days. View insights
+                </div>
+                <div class="profile-content-actions">
+                    <i class="fas fa-info-circle profile-content-action"></i>
+                </div>
+            </div>
+            <div class="profile-content-section">
+                <div class="profile-content-title">
+                    New
+                </div>
+                <div class="profile-content-actions">
+                    <i class="fas fa-plus-circle profile-content-action"></i>
+                </div>
+            </div>
+            <div class="profile-content-section">
+                <div class="profile-content-title">
+                    Posts
+                </div>
+                <div class="profile-content-actions">
+                    <i class="fas fa-save profile-content-action"></i>
+                    <i class="fas fa-tag profile-content-action"></i>
+                </div>
+            </div>
+            <div class="profile-content-post">
+                <div class="profile-content-post-image">
+                    <img src="https://i.imgur.com/R6gR8yA.jpg" alt="Post Image">
+                </div>
+                <div class="profile-content-post-text">
+                    Post Text
+                </div>
+            </div>
+            <div class="profile-content-post">
+                <div class="profile-content-post-image">
+                    <img src="https://i.imgur.com/R6gR8yA.jpg" alt="Post Image">
+                </div>
+                <div class="profile-content-post-text">
+                    Post Text
+                </div>
+            </div>
+            <div class="profile-content-post">
+                <div class="profile-content-post-image">
+                    <img src="https://i.imgur.com/R6gR8yA.jpg" alt="Post Image">
+                </div>
+                <div class="profile-content-post-text">
+                    Post Text
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit-id.js" crossorigin="anonymous"></script>
+</body>
+</html>
